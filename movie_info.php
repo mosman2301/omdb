@@ -76,10 +76,11 @@
           ];
           $people_result = $db->query($sql);
           while($people_row = $people_result->fetch_assoc()){
-            if(array_key_exists($people_row['role'], $people_arrays))
-              array_push($people_arrays[$people_row['role']], $people_row['screen_name']);
+            $role = strtolower($people_row['role']);
+            if(array_key_exists($role, $people_arrays))
+              array_push($people_arrays[$role], $people_row['screen_name']);
             else
-              echo "<p>Unrecognized people role '".$people_row['role'].
+              echo "<p>Unrecognized people role '".$role.
                   "' for person '".$people_row['screen_name']."'</p>";
           }
 
@@ -111,10 +112,11 @@
             ];
             $people_result = $db->query($sql);
             while($people_row = $people_result->fetch_assoc()){
-              if(array_key_exists($people_row['role'], $people_arrays))
-                array_push($people_arrays[$people_row['role']], $people_row['screen_name']);
+              $role = strtolower($people_row['role']);
+              if(array_key_exists($role, $people_arrays))
+                array_push($people_arrays[$role], $people_row['screen_name']);
               else
-                echo "<p>Unrecognized people role '".$people_row['role'].
+                echo "<p>Unrecognized people role '".$role.
                     "' for person '".$people_row['screen_name']."'</p>";
             }
             echo "<p>Lyricist: ".implode($people_arrays["lyricist"], ", ")."</p>";
@@ -141,10 +143,11 @@
             ];
             $song_media_result = $db->query($sql);
             while($song_media_row = $song_media_result->fetch_assoc()){
-              if(array_key_exists($song_media_row['s_link_type'], $song_media_arrays))
-                array_push($song_media_arrays[$song_media_row['s_link_type']], $song_media_row['s_link']);
+              $link_type = strtolower($song_media_row['s_link_type']);
+              if(array_key_exists($link_type, $song_media_arrays))
+                array_push($song_media_arrays[$link_type], $song_media_row['s_link']);
               else
-                echo "<p>Unrecognized song_media role '".$song_media_row['s_link_type'].
+                echo "<p>Unrecognized song_media role '".$link_type.
                     "' for person '".$song_media_row['s_link']."'</p>";
             }
             if(count($song_media_arrays["audio"]) > 0){
@@ -177,10 +180,11 @@
           ];
           $movie_media_result = $db->query($sql);
           while($movie_media_row = $movie_media_result->fetch_assoc()){
-            if(array_key_exists($movie_media_row['m_link_type'], $movie_media_arrays))
-              array_push($movie_media_arrays[$movie_media_row['m_link_type']], $movie_media_row['m_link']);
+            $link_type = strtolower($movie_media_row['m_link_type']);
+            if(array_key_exists($link_type, $movie_media_arrays))
+              array_push($movie_media_arrays[$link_type], $movie_media_row['m_link']);
             else
-              echo "<p>Unrecognized movie_media role '".$movie_media_row['m_link_type'].
+              echo "<p>Unrecognized movie_media role '".$link_type.
                   "' for person '".$movie_media_row['m_link']."'</p>";
           }
           if(count($movie_media_arrays["poster"]) > 0){
