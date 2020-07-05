@@ -11,10 +11,12 @@
 
 <div class="right-content">
     <div class="container">
+
     
 
       <h3 style = "color: #01B0F1;">Movies</h3>
       <button><a class="btn btn-sm" href="create_movie.php">Create a Movie</a></button>
+
         <table id="info" cellpadding="0" cellspacing="0" border="0"
             class="datatable table table-striped table-bordered datatable-style table-hover"
             width="100%" style="width: 100px;">
@@ -24,8 +26,10 @@
                         <th>Name</th>
                         <th>English Name</th>
                         <th>Year</th>
+
                         <th>Action</th>
                         
+
                 </tr>
               </thead>
 
@@ -35,7 +39,9 @@
                         <th>Name</th>
                         <th>English Name</th>
                         <th>Year</th>
+
                         <th>Action</th>
+
                 </tr>
               </tfoot>
 
@@ -54,9 +60,11 @@ $result = $db->query($sql);
                                 <td>'.$row["native_name"].' </span> </td>
                                 <td>'.$row["english_name"].'</td>
                                 <td>'.$row["year_made"].'</td>
+
                                 <td><a class="btn btn-info btn-sm" href="movie_info.php?id='.$row["movie_id"].'">Display</a>
                                 <a class="btn btn-warning btn-sm" href="modify_movie.php?movie_id='.$row["movie_id"].'">Modify</a>
                                 <a class="btn btn-danger btn-sm" href="delete_movie.php?movie_id='.$row["movie_id"].'">Delete</a></td> 
+
                             </tr>';
                     }//end while
                 }//end if
@@ -112,6 +120,7 @@ $result = $db->query($sql);
    tfoot {
      display: table-header-group;
    }
+
   body{
     background:url(background_main.jpg);
     background-size:80px 60px; it's not mandatory to give size.

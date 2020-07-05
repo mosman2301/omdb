@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <?php
@@ -33,6 +34,6 @@ table.center {
 <body>
 <center>
 <h2 style = "color: #01B0F1;">Welcome to OMDB </h3>
-</body>
 </center>
+</body>
 </html>
