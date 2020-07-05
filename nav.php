@@ -29,7 +29,9 @@
         <ul>
             <a href="index.php">
               <li class="horozontal-li-logo">
-              <img src ="./images/main_logo.png">
+
+              <img src ="./images/main_logo_omdb.png">
+
               <br/>OMDB</li>
             </a>
             <a href="index.php">

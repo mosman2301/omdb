@@ -62,7 +62,9 @@
           }
           
           echo "<h3 style = 'color: #01B0F1;'>People</h3>";
-          $sql = "SELECT `people`.`screen_name`, `movie_people`.`role` 
+
+          $sql = "SELECT `people`.`first_name`,`people`.`last_name`, `movie_people`.`role` 
+
           FROM `people`, `movie_people` 
           WHERE `movie_people`.`movie_id` = ".$_GET['id']." AND `movie_people`.`people_id` = `people`.`id` ";
           $people_arrays = [
@@ -72,16 +74,20 @@
             "lead actor" => [],
             "lead actress" => [],
             "actor" => [],
-            "actress" => []
+
+            "actress" => []  
           ];
           $people_result = $db->query($sql);
           while($people_row = $people_result->fetch_assoc()){
+         
             $role = strtolower($people_row['role']);
             if(array_key_exists($role, $people_arrays))
-              array_push($people_arrays[$role], $people_row['screen_name']);
+              array_push($people_arrays[$role], $people_row['first_name']." ".$people_row['last_name']);
             else
+             
               echo "<p>Unrecognized people role '".$role.
-                  "' for person '".$people_row['screen_name']."'</p>";
+                  "' for person '".$people_row['first_name']." ".$people_row['last_name']."'</p>";
+
           }
 
           echo "<p>Director(s): ".implode($people_arrays["director"], ", ")."</p>";
@@ -98,11 +104,11 @@
           WHERE `movie_song`.`movie_id` = ".$_GET['id']." AND `movie_song`.`song_id` = `songs`.`song_id`;";
           $songs_result = $db->query($sql);
           while($songs_row = $songs_result->fetch_assoc()){
-
+            
             echo "<h3 style = 'color: #01B0F1;'>".$songs_row["title"]."</h3>";
             echo "<p>Lyrics: ".$songs_row["lyrics"]."</p>";
+            $sql = "SELECT `people`.`first_name`, `people`.`last_name`, `song_people`.`role` 
 
-            $sql = "SELECT `people`.`screen_name`, `song_people`.`role` 
             FROM `people`, `song_people` 
             WHERE `song_people`.`song_id` = ".$songs_row['song_id']." AND 
             `song_people`.`people_id` = `people`.`id`;";
@@ -112,12 +118,15 @@
             ];
             $people_result = $db->query($sql);
             while($people_row = $people_result->fetch_assoc()){
+
+              
               $role = strtolower($people_row['role']);
               if(array_key_exists($role, $people_arrays))
-                array_push($people_arrays[$role], $people_row['screen_name']);
+                array_push($people_arrays[$role], $people_row['first_name']." ".$people_row['last_name']);
               else
+                
                 echo "<p>Unrecognized people role '".$role.
-                    "' for person '".$people_row['screen_name']."'</p>";
+                    "' for person '".$people_row['first_name']."'</p>";
             }
             echo "<p>Lyricist: ".implode($people_arrays["lyricist"], ", ")."</p>";
             echo "<p>Playback Singer(s): ".implode($people_arrays["playback singer"], ", ")."</p>";
@@ -143,10 +152,12 @@
             ];
             $song_media_result = $db->query($sql);
             while($song_media_row = $song_media_result->fetch_assoc()){
+
               $link_type = strtolower($song_media_row['s_link_type']);
               if(array_key_exists($link_type, $song_media_arrays))
                 array_push($song_media_arrays[$link_type], $song_media_row['s_link']);
               else
+
                 echo "<p>Unrecognized song_media role '".$link_type.
                     "' for person '".$song_media_row['s_link']."'</p>";
             }
@@ -180,10 +191,12 @@
           ];
           $movie_media_result = $db->query($sql);
           while($movie_media_row = $movie_media_result->fetch_assoc()){
+
             $link_type = strtolower($movie_media_row['m_link_type']);
             if(array_key_exists($link_type, $movie_media_arrays))
               array_push($movie_media_arrays[$link_type], $movie_media_row['m_link']);
             else
+
               echo "<p>Unrecognized movie_media role '".$link_type.
                   "' for person '".$movie_media_row['m_link']."'</p>";
           }
@@ -215,4 +228,6 @@
    }
  </style>
 
+
   <?php include("./footer.php"); ?>
+
