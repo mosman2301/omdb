@@ -1,3 +1,6 @@
+
+<!DOCTYPE html>
+
 <?php
 
   // set the current page to one of the main buttons
@@ -20,11 +23,17 @@ table.center {
     margin-left:auto; 
     margin-right:auto;
   }
+  body { 
+  background: url('images/') no-repeat fixed center;
+  background-size: 60% 70%;
+  background-color: white; 
+}
 </style>
 </head>
 
 <body>
-<h2 style = "color: #01B0F1;">Welcome to ABC </h3>
+<center>
+<h2 style = "color: #01B0F1;">Welcome to OMDB </h3>
+</center>
 </body>
-
 </html>

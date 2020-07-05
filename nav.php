@@ -29,7 +29,9 @@
         <ul>
             <a href="index.php">
               <li class="horozontal-li-logo">
-              <img src ="./images/main_logo.png">
+
+              <img src ="./images/main_logo_omdb.png">
+
               <br/>OMDB</li>
             </a>
             <a href="index.php">
@@ -52,7 +54,7 @@
               <img src="./images/music.png">
               <br/>Songs</li>
             </a>
-            <a href="index.php">
+            <a href="reports.php">
               <li <?php if($nav_selected == "HOME"){ echo 'class="current-page"'; } ?>>
               <img src="./images/reports_summary.png">
               <br/>Reports</li>
