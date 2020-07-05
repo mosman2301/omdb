@@ -54,7 +54,7 @@
               <img src="./images/music.png">
               <br/>Songs</li>
             </a>
-            <a href="index.php">
+            <a href="reports.php">
               <li <?php if($nav_selected == "HOME"){ echo 'class="current-page"'; } ?>>
               <img src="./images/reports_summary.png">
               <br/>Reports</li>
