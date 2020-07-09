@@ -2,9 +2,9 @@
 Query 7: Get the list of trivia for the people. Do NOT show blanks on either side. 
 By Kim San Heng 
 */
-SELECT DISTINCT *
+SELECT DISTINCT `id`,`stage_name`,`first_name`,`middle_name`,`last_name`,`gender`,`image_name`,`people_trivia_id`,`people_trivia_name` 
 FROM `people`
-INNER JOIN `people_trivia`
+INNER JOIN `people_trivia` 
 ON `id` = `people_id`
 WHERE `id` = `people_id`
 
